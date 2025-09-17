@@ -1,25 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta name="robots" content="noindex,nofollow">
   <meta charset="utf-8">
-  <title>{{ title or "woofdog" }}</title>
+  <meta name="robots" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "woofdog" }}</title>
   <meta name="description" content="{{ description or 'Security portfolio' }}">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+<link rel="alternate icon" href="{{ url_for('static', filename='favicon.ico') }}?v={{ ASSET_VER|default('1') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32.png') }}?v={{ ASSET_VER|default('1') }}">
+
+  <!-- Preload the hero (LCP) image -->
+  <link rel="preload" as="image"
+        href="{{ url_for('static', filename='profile.jpeg') }}">
+
+  <!-- Preconnect for Substack thumbnails -->
+  <link rel="preconnect" href="https://substackcdn.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.substack.com" crossorigin>
+
+  <!-- Main stylesheet (+ cache-bust token if provided) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v={{ ASSET_VER|default('1') }}">
+
   <style>
     /* sticky header */
     .site-header{
-      position: sticky; top: 0; z-index: 1000;
+      position: sticky; /* modern browsers */
+      top: 0;
+      z-index: 1000;
       backdrop-filter: blur(6px);
       background: color-mix(in oklab, var(--bg), transparent 25%);
       border-bottom: 1px solid var(--border);
     }
-    .site-header .wrap{max-width: var(--max); margin: 0 auto; padding: 10px 16px; display:flex; align-items:center; gap:16px}
+    .site-header .wrap{
+      max-width: var(--max); margin: 0 auto;
+      padding: 10px 16px; display:flex; align-items:center; gap:16px;
+    }
     .site-header .brand{font-weight:700; letter-spacing:.2px}
     .site-header nav{margin-left:auto; display:flex; gap:14px; flex-wrap:wrap}
-    .site-header a{color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; padding:6px 8px; border-radius:8px}
+    .site-header a{
+      color:var(--muted); text-decoration:none; border-bottom:1px solid transparent;
+      padding:6px 8px; border-radius:8px;
+    }
     .site-header a:hover{color:var(--fg); border-color:var(--accent)}
     /* offset anchor targets so sticky header doesn't cover them */
     section[id]{scroll-margin-top: 72px;}
@@ -30,22 +52,21 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="#top">woofdog</a>
-<!-- base.html (nav) -->
-<nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#blog">Recent</a>
-  <a href="#top">Contact</a>
-</nav>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Recent</a>
+        <a href="#top">Contact</a>
+      </nav>
     </div>
   </header>
 
-<main id="top" class="container">
-  {% block content %}{% endblock %}
-</main>
+  <main id="top" class="container">
+    {% block content %}{% endblock %}
+  </main>
 
-<footer class="footer">
-  <span>© {{ 2025 }} woofdog · <a href="#top">Contact</a></span>
-</footer>
+  <footer class="footer">
+    <span>© {{ 2025 }} woofdog · <a href="#top">Back to top</a></span>
+  </footer>
 </body>
 </html>

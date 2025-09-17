@@ -21,7 +21,10 @@
   </div>
 
   <div class="hero__image">
-    <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Profile picture">
+    <img src="{{ url_for('static', filename='profile.jpeg') }}"
+     alt="Profile picture"
+     width="360" height="360"
+     decoding="async" fetchpriority="high">
   </div>
 </section>
 
@@ -31,7 +34,7 @@
   <p>
     I’m a CS grad (September 2025), looking for my first role in cyber security.
       I’ve built random number generators, developed web apps, fried several MCUs,
-      and spend evenings researching vulnerabilities.
+      and I'm learning everything I can about cyber attacks.
       I am always looking for new things to learn, and enjoy writing about my findings.
       Feel free to get in contact!
   </p>
@@ -42,20 +45,26 @@
   <h2>Projects</h2>
 
   <div class="grid projects-grid">
-    {% for p in projects %}
-    <a class="proj-card" href="{{ p.url }}" target="_blank" rel="noopener">
-      <div class="proj-media">
-        <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.title }}">
-        <div class="proj-overlay"></div>
-{#        <div class="proj-title">{{ p.title }}</div>#}
-      </div>
-      <div class="proj-body">
-        <h3>{{ p.title }}</h3>
-        <p>{{ p.desc }}</p>
-        <span class="proj-cta">Read write-up →</span>
-      </div>
-    </a>
-    {% endfor %}
+{% for p in projects %}
+  {% set eager = 'eager' if loop.index0 < 2 else 'lazy' %}
+  <a class="proj-card" href="{{ p.url }}" target="_blank" rel="noopener">
+    <div class="proj-media">
+      <picture>
+        <source srcset="{{ url_for('static', filename=p.image|replace('.png','.webp')|replace('.jpg','.webp')|replace('.jpeg','.webp')) }}" type="image/webp">
+        <img src="{{ url_for('static', filename=p.image) }}"
+             alt="{{ p.title }}"
+             width="1280" height="720"
+             loading="{{ eager }}" decoding="async">
+      </picture>
+      <div class="proj-overlay"></div>
+    </div>
+    <div class="proj-body">
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.desc }}</p>
+      <span class="proj-cta">Read write-up →</span>
+    </div>
+  </a>
+{% endfor %}
   </div>
 </section>
 
@@ -67,7 +76,9 @@
     {% for p in posts %}
     <a class="post-row" href="{{ p.url }}" target="_blank" rel="noopener">
       <div class="post-thumb">
-        <img src="{{ p.image }}" alt="{{ p.title }}">
+        <img src="{{ p.image }}" alt="{{ p.title }}"
+     width="1280" height="720"
+     loading="lazy" decoding="async">
       </div>
       <div class="post-info">
         <h3>{{ p.title }}</h3>
