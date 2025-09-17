@@ -1,0 +1,34 @@
+{
+  "current_project": {
+    "title": "Hardware TRNG — assurance & validation",
+    "summary": "Design, entropy sources, dieharder/NIST STS, system integration, and failure modes.",
+    "links": [
+      {"title": "NIST SP 800-90B (Entropy Sources)", "url": "https://csrc.nist.gov/publications/detail/sp/800-90b/final"},
+      {"title": "Dieharder Test Suite", "url": "https://webhome.phy.duke.edu/~rgb/General/dieharder.php"},
+      {"title": "AES-CTR DRBG notes", "url": "https://crypto.stackexchange.com/questions/1670"}
+    ],
+    "status": "Building test harness; collecting 10GB samples.",
+    "substack_url": ""
+  },
+  "collections": [
+    {
+      "title": "Web app security",
+      "desc": "Burp workflow, auth pitfalls, SSRF/XSS payloads, and checklists.",
+      "links": [
+        {"title": "PortSwigger Academy", "url": "https://portswigger.net/web-security"},
+        {"title": "OWASP ASVS", "url": "https://owasp.org/www-project-application-security-verification-standard/"},
+        {"title": "XSS Cheat Sheet", "url": "https://portswigger.net/web-security/cross-site-scripting/cheat-sheet"}
+      ],
+      "archive_substack": ""
+    },
+    {
+      "title": "Network recon",
+      "desc": "Nmap/Zmap scans, service fingerprints, and fast host discovery.",
+      "links": [
+        {"title": "Nmap Reference Guide", "url": "https://nmap.org/book/man.html"},
+        {"title": "TLS Fingerprinting (JA3)", "url": "https://github.com/salesforce/ja3"}
+      ],
+      "archive_substack": ""
+    }
+  ]
+}

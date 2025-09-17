@@ -1,6 +1,130 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Hi, I’m Harry (aka woofdog)</h1>
-  <p>2025 CS grad · cybersecurity enjoyer.</p>
-  <p>See my <a href="/blog">blog</a> for write-ups and notes.</p>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero__content">
+    <div class="hero__kicker">Cyber Security • London, England</div>
+    <h1 class="hero__title">Harry Sadleir</h1>
+   <p class="hero__tagline">
+  MSc Computer Science (Distinction)<br>
+  BSc (Hons) Politics, Philosophy and Economics (2:1)
+</p>
+
+    <div class="hero__links hero__links--big">
+      <a href="https://github.com/woofdog7" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://woofdog7.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="{{ url_for('static', filename='cv.pdf') }}" target="_blank" rel="noopener">CV</a>
+      <a href="mailto:harrysadleir@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/hs7777/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="hero__image">
+    <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Profile picture">
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <h2>About me</h2>
+  <p>
+    I’m a CS grad (September 2025), looking for my first role in cyber security.
+      I’ve built random number generators, developed web apps, fried several MCUs,
+      and spend evenings researching vulnerabilities.
+      I am always looking for new things to learn, and enjoy writing about my findings.
+      Feel free to get in contact!
+  </p>
+</section>
+
+<!-- Projects (preview cards linking to Substack) -->
+<section class="projects-preview" id="projects">
+  <h2>Projects</h2>
+
+  <div class="grid projects-grid">
+    {% for p in projects %}
+    <a class="proj-card" href="{{ p.url }}" target="_blank" rel="noopener">
+      <div class="proj-media">
+        <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.title }}">
+        <div class="proj-overlay"></div>
+{#        <div class="proj-title">{{ p.title }}</div>#}
+      </div>
+      <div class="proj-body">
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.desc }}</p>
+        <span class="proj-cta">Read write-up →</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Recent (Substack) -->
+<section class="recent-posts" id="blog">
+  <h2>Recent posts</h2>
+
+  <div class="posts-list">
+    {% for p in posts %}
+    <a class="post-row" href="{{ p.url }}" target="_blank" rel="noopener">
+      <div class="post-thumb">
+        <img src="{{ p.image }}" alt="{{ p.title }}">
+      </div>
+      <div class="post-info">
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.desc }}</p>
+        <span class="post-cta">Read on Substack →</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <p class="posts-more">
+    <a href="{{ substack_base }}" target="_blank" rel="noopener">All posts →</a>
+  </p>
+</section>
+
+
+    <!-- Current project -->
+{% if reading.current_project %}
+<section id="current">
+  <h2>Current project</h2>
+  <div class="card">
+    <h3>{{ reading.current_project.title }}</h3>
+    <p>{{ reading.current_project.summary }}</p>
+    <p><strong>Status:</strong> {{ reading.current_project.status }}</p>
+    <ul class="linklist">
+      {% for l in reading.current_project.links %}
+      <li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% if reading.current_project.substack_url %}
+      <p><a href="{{ reading.current_project.substack_url }}" target="_blank" rel="noopener">Read the write-up on Substack →</a></p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Collections (sources & readings) -->
+{% if reading.collections and reading.collections|length > 0 %}
+<section id="collections">
+  <h2>Collections</h2>
+  <div class="grid">
+    {% for c in reading.collections %}
+    <div class="card">
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.desc }}</p>
+      <ul class="linklist">
+        {% for l in c.links %}
+        <li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a></li>
+        {% endfor %}
+      </ul>
+      {% if c.archive_substack %}
+        <p><a href="{{ c.archive_substack }}" target="_blank" rel="noopener">Archive / write-up →</a></p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 {% endblock %}

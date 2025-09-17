@@ -1,22 +1,51 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ title or "woofdog" }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
-  </head>
-  <body>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="/">woofdog</a>
-        <a class="nav-link" href="/blog">Blog</a>
-        <a class="nav-link" href="https://github.com/woofdog7">GitHub</a>
-      </div>
-    </nav>
-    <main class="container py-4">
-      {% block content %}{% endblock %}
-    </main>
-  </body>
+<head>
+    <meta name="robots" content="noindex,nofollow">
+  <meta charset="utf-8">
+  <title>{{ title or "woofdog" }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description or 'Security portfolio' }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* sticky header */
+    .site-header{
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(6px);
+      background: color-mix(in oklab, var(--bg), transparent 25%);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-header .wrap{max-width: var(--max); margin: 0 auto; padding: 10px 16px; display:flex; align-items:center; gap:16px}
+    .site-header .brand{font-weight:700; letter-spacing:.2px}
+    .site-header nav{margin-left:auto; display:flex; gap:14px; flex-wrap:wrap}
+    .site-header a{color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; padding:6px 8px; border-radius:8px}
+    .site-header a:hover{color:var(--fg); border-color:var(--accent)}
+    /* offset anchor targets so sticky header doesn't cover them */
+    section[id]{scroll-margin-top: 72px;}
+    html{scroll-behavior:smooth;}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">woofdog</a>
+<!-- base.html (nav) -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#blog">Recent</a>
+  <a href="#top">Contact</a>
+</nav>
+    </div>
+  </header>
+
+<main id="top" class="container">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <span>© {{ 2025 }} woofdog · <a href="#top">Contact</a></span>
+</footer>
+</body>
 </html>
