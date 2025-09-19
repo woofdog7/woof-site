@@ -1,14 +1,14 @@
 {
   "current_project": {
-    "title": "Hardware TRNG — assurance & validation",
-    "summary": "Design, entropy sources, dieharder/NIST STS, system integration, and failure modes.",
+    "title": "Hardware TRNG — assurance & validation write-ups",
+    "summary": "Design, entropy sources, dieharder/NIST STS, system integration - reworking thesis into write-ups",
     "links": [
       {"title": "NIST SP 800-90B (Entropy Sources)", "url": "https://csrc.nist.gov/publications/detail/sp/800-90b/final"},
       {"title": "Dieharder Test Suite", "url": "https://webhome.phy.duke.edu/~rgb/General/dieharder.php"},
       {"title": "AES-CTR DRBG notes", "url": "https://crypto.stackexchange.com/questions/1670"}
     ],
     "status": "Building test harness; collecting 10GB samples.",
-    "substack_url": "https://substack.com/home/post/p-173785397"
+    "substack_url": "https://woofdog7.substack.com/p/how-random-is-random"
   },
   "collections": [
     {
@@ -19,7 +19,7 @@
         {"title": "OWASP ASVS", "url": "https://owasp.org/www-project-application-security-verification-standard/"},
         {"title": "XSS Cheat Sheet", "url": "https://portswigger.net/web-security/cross-site-scripting/cheat-sheet"}
       ],
-      "archive_substack": "https://substack.com/home/post/p-173785397"
+      "archive_substack": ""
     },
     {
       "title": "Network recon",

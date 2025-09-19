@@ -8,7 +8,7 @@ from pathlib import Path
 from flask import Response
 
 # ----- config / constants -----
-SUBSTACK_BASE = "https://ridethewave721.substack.com"  # swap substack later
+SUBSTACK_BASE = "https://woofdog7.substack.com/"  # swap substack later
 CACHE_TTL: float = 24 * 60 * 60.0                      # refresh 24h
 HTTP_TIMEOUT = 8
 HTTP_HEADERS = {"User-Agent": "woof-site/1.0 (+https://example.com)"}

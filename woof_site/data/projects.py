@@ -3,7 +3,7 @@ PROJECTS = [
         "title": "Creating a True-Random Number Generator",
         "desc": "TRNG implementation and assurance write-up",
         "image": "projects/P2_dia.png",
-        "url": "https://woofdog7.substack.com/p/web-app-integration-test-post"
+        "url": "https://woofdog7.substack.com/"
     },
     {
         "title": "Statistical Evaluation for Cryptography",

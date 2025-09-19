@@ -38,15 +38,15 @@ python run.py
 - [ ] Fix “Collections” properly - sources/notes; archive to Substack when done.
 
 ### SEO
-- [ ] Investigate whether to allow indexing (robots.txt + X-Robots-Tag).
-- [ ] Fix sitemap
+- [X] Investigate whether to allow indexing (robots.txt + X-Robots-Tag).
+- [X] Fix sitemap
 
 ### Code cleanup
 - [X] Set up app factory + blueprints (`routes.py`, `helpers.py`, `data/`).
-- [ ] Add basic tests for helpers (Substack parsing, reading loader).
+- [X] Add basic tests for helpers (Substack parsing, reading loader).
 
 ### Deployment
-- [ ] Gunicorn + Caddy on Raspberry Pi.
-- [ ] Systemd service with `Environment=SECRET_KEY=...`.
-- [ ] HTTPS, HSTS, compression, and static caching.
-- [ ] Rsync deploy script to update `static/` + restart service.
+- [X] Gunicorn + Caddy on Raspberry Pi.
+- [X] Systemd service with `Environment=SECRET_KEY=...`.
+- [X] HTTPS, HSTS, compression, and static caching.
+- [X] Git deploy script to update `static/` + restart service.
